@@ -42,16 +42,19 @@ class GridPlayer:
                         return u.move(u.direction("RIGHT"))
         else: 
             return None
-
+    def organize(mapa): #mapa is the gamemap
+        pass
     def tick(self, game_map, your_units, enemy_units, resources, turns_left):
         ans = []
-        get_closest_resopurse()
         for unit in your_units:
             if unit.type == "worker":
+                #grab closest stuff
+                get_closest_resopurse(unit, game_map)
+
                 if unit.can_mine(game_map):
                     ans.append(unit.mine())
                 else:
-                    ans.append( unit.move_towards(self.closest_resourse))
+                    ans.append(unit.move_towards(self.closest_resourse))
             else:
                 ans.append(worrior_desisions(your_units, enemy_units, resources))
         return ans
@@ -90,7 +93,7 @@ class GridPlayer:
                 else:
                     moves.append(i.attack(attacks[0]))
 
-        return  moves
+        return moves
 
 
 
